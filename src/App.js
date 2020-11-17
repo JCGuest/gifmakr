@@ -21,6 +21,13 @@ function App() {
 
   return ready ? (
     <div className= "App">
+      { video && <video
+                      controls
+                      width="250"
+                      src={URL.createObjectURL(video)}>
+                 </video>      
+      
+      }
 
       <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))}></input>
       
