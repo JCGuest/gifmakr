@@ -32,8 +32,10 @@ function App() {
   const data = ffmpeg.FS('readFile', 'out.gif');
 
   // create a URL
-  const url = URL.createObjectURL(new Blob([data.buffer]));
-
+  const url = URL.createObjectURL(new Blob([data.buffer], { type: 'image/gif' }));
+  
+  //set state
+  setGif(url)
   }
 
   return ready ? (
@@ -47,8 +49,16 @@ function App() {
       
       }
 
+    <br></br>
+      
       <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))}></input>
       
+      <h3>Result</h3>
+
+      <button onClick={convertToGif}>Convert</button>
+
+      { gif && <img src={gif}/>}
+
     </div>
   ) :
   (<p>Loading...</p>);
