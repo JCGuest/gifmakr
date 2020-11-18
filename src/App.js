@@ -41,6 +41,7 @@ function App() {
   return ready ? (
     // display video only when defined, convert video to URL for browser
     <div className= "App">
+      <h3>Video</h3>
       { video && <video
                       controls
                       width="250"
@@ -50,18 +51,18 @@ function App() {
       }
 
     <br></br>
-      
-      <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))}></input>
-      
-      <h3>Result</h3>
 
-      <button onClick={convertToGif}>Convert</button>
+    {!video && <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))}></input>}
+      
+      
+      <h3>Gif</h3>
+
+     {!gif &&  <button onClick={convertToGif}>Convert</button>}
 
       { gif && <img src={gif}/>}
 
     </div>
-  ) :
-  (<p>Loading...</p>);
+  ) : (<p>Loading...</p>);
 }
 
 export default App;
